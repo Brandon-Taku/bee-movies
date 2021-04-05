@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Movie from './Movie';
+import Results from './Results';
+import { Link } from 'react-router-dom';
+import './Search.css';
+
 
 const Search = () => {
 
@@ -34,35 +37,35 @@ const Search = () => {
 
     return (
         <div className="container">
-        
-            <form class="input-group col-md-8 offset-md-1" style={{ width: 650 }} onSubmit={getSearch} >
-                <input type="search" class="form-control outline" placeholder="Search" aria-label="Search"
-                    aria-describedby="search-addon" value={search} onChange={updateSearch} />
-                <button type="submit" class="btn btn-outline-primary">Search</button>
-                <br></br>
+
+            <form onSubmit={getSearch}>
+                <div class="container">
+                    <input type="text" placeholder="Search..." value={search} onChange={updateSearch} />
+                    <div class="search"></div>
+                </div>
             </form>
-
-            <div className="col-md-8 offset-md-2" >
-              
-            </div>
-
+            
             <section className="movie-container">
+
+
                 {
                     movies.map(movie => (
-                        <Movie 
+                        <Results
                             key={movie.id}
                             title={movie.title}
                             pic={IMAGE_API + movie.poster_path}
                             date={movie.release_date}
                             searchValue={updateSearch}
+                            overview={movie.overview}
                         />
                     ))
 
-                    
+
                 }
 
             </section>
-       </div>
+
+        </div>
     )
 }
 

@@ -1,36 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import MovieDetails from '../MovieDetails/MovieDetails';
-import '../style.css';
+import React, { useState } from 'react';
+import '../card.css';
 
 
-const Movie = ({ title, pic, movie_id, overview }) => {
+const Movie = ({ title, pic, overview }) => {
 
     const API_KEY = "fe5e020771ca617fdbe53a006489cea5";
     const IMAGE_API = "https://image.tmdb.org/t/p/w1280";
 
-    const [movies, setMovies] = useState([]);
-    const [movieById, setMovieById] = useState([]);
+    // useEffect(() => {
+    //     getEachgMovie()
+    // }, [])
 
-    useEffect(() => {
-        getMovies()
-    }, [])
+    const [single, setSingle] = useState([]);
 
-    const getMovies = async () => {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
+    const getEachgMovie = async () => {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/527774?api_key=${API_KEY}&language=en-US`);
 
         const data = await response.json();
-        setMovies(data.results);
+        setSingle(data);
+        console.log(data);
     }
 
     return (
-        
-        <div className="container">
-	       	<img src={pic} alt="Avatar" className="image" style={{ width: 290 }} />
-            <div className="middle">
-            <div className="text"><strong style={{ fontSize: 30 }}>{title}</strong><br/> {overview} <br/></div>
+
+            
+            <div className="card">
+                {/* <a href="#"> */}
+                    <div className="img1" style={{
+                        backgroundImage: `url(${pic})`
+                    }}></div>
+                    <div className="img2" style={{
+                        backgroundImage: `url(${pic})`
+                    }}></div>
+                    <div className="title"></div>
+                    <div className="text">{overview}</div>
+                    <a href="#"><div className="title"></div></a>
+                    {/* <a href="#"><div className="catagory">Download <i className="fas fa-film"></i></div></a> */}
+                    {/* <a href="#"><div className="views">20211  <i className="far fa-eye"></i> </div></a> */}
+                {/* </a> */}
             </div>
-	    </div>
+
+
 
     )
 }

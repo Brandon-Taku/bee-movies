@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TopRatedMovie from './TopRatedMovie';
+import Footer from '../Footer/Footer';
 
 const TopRatedMovies = () => {
 
@@ -24,103 +25,88 @@ const TopRatedMovies = () => {
     return (
         <div>
 
-             <nav className="navbar navbar-expand-lg navbar-light bg-secondary shadow fixed-top" >
-                    <a className="navbar-brand" href="/"> Movie Hub</a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav" style={{ color: "white" }}>
-                        <a className="nav-item nav-link" href="/">Home <span className="sr-only"></span></a>
-                        <a className="nav-item nav-link active" href="/top-rated">Top-Rated</a>
-                        <a className="nav-item nav-link" href="/up-coming">Up-Coming</a>
-                        <a className="nav-item nav-link" href="/now-showing">Now-Showing</a>
-                        <a className="nav-item nav-link" href="/tv-series">TV-Series</a>
-                        </div>
-                    </div>
-                </nav>
-                
 
-                <div className="row" id="header">
-                <div className="col-md-3 col-md-offset-8">
-                    <div className="center p-5">
-                        <img src={process.env.PUBLIC_URL + 'squad.jpg'} width="540%" style={{ borderRadius: 100 }}/> 
+            <div id="demo-1" style={{
+                backgroundImage: `url(/avengers.jpg)`
+            }}>
+                <div class="demo-inner-content">
+
+                    <div class="header-w3-agileits" id="home">
+                        <div class="inner-header-agile">
+                            <nav class="navbar navbar-default">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                       
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        
+                                    </button>
+                                    <h1><a href="/"><span>B</span>ee <span>M</span>ovies</a></h1>
+                                </div>
+
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="/">Home</a></li>
+
+                                        <li class="active"><a href="/top-rated">Top-Rated</a></li>
+                                        <li><a href="/tv-series">TV-Series</a></li>
+                                        <li><a href="/up-coming">Up-Coming</a></li>
+                                        <li><a href="/now-showing">Now-Showing</a></li>
+
+
+
+
+                                    </ul>
+
+                                </div>
+                                <div class="clearfix"> </div>
+                            </nav>
+                            <div class="w3ls_search">
+                                <div class="cd-main-header">
+                                    <ul class="cd-header-buttons">
+                                        <li><a class="cd-search-trigger" href="cd-search"> <span></span></a></li>
+                                    </ul>
+                                </div>
+                                <div id="cd-search" class="cd-search">
+                                    <form action="#" method="post">
+                                        <input name="Search" type="search" placeholder="Search..." />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
+                    
                 </div>
+            </div>
+
+
 
             <section className="movie-container">
                 {
                     movies.map(movie => (
-                        <TopRatedMovie 
+                        <TopRatedMovie
                             key={movie.id}
                             summary={movie.overview}
                             title={movie.title}
                             pic={IMAGE_API + movie.poster_path}
                             date={movie.release_date}
-                      
+
                         />
                     ))
 
-                    
+
                 }
 
             </section>
 
+            <Footer />
 
-            <footer className="bg-secondary text-center text-lg-start mt-5">
 
-              <div className="container p-4">
-
-                <div className="row">
-    
-                <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h2 className="text-normal ">Movie Hub</h2>
-
-                    <p>
-                    Movie Hub is a peer-to-peer release group known for distributing large numbers of movies as free downloads through BitTorrent.
-                     Movie Hub releases were characterised through their consistent HD video quality in a small file size,
-                     which attracted many downloaders.
-                    </p>
-                </div>
-    
-                <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 className="text-normal">Movies</h5>
-
-                    <ul className="list-unstyled mb-0 text-decoration-none">
-                    <li>
-                        <a href="/top-rated" className="text-dark text-decoration-none">Top Rated</a>
-                    </li>
-                    <li>
-                        <a href="/up-coming" className="text-dark text-decoration-none">Up-Coming</a>
-                    </li>
-                    <li>
-                        <a href="/tv-series" className="text-dark text-decoration-none">Now-Showing</a>
-                    </li>
-    
-                    </ul>
-                </div>
- 
-                <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 className="text-normal mb-0">TV Seasons</h5>
-
-                    <ul className="list-unstyled">
-                    <li>
-                        <a href="#!" className="text-dark text-decoration-none">Latest Series</a>
-                    </li>
-                    
-                    </ul>
-                </div>
-               
-                </div>
-            </div>
-    
-            <div className="bg-dark text-center p-3 text-light" >
-                © 2021 Copyright:
-                <a className="text-light text-decoration-none" href="https://github.com/Brandon-Taku" style={{ color: "white" }}> Brandon-Taku</a>
-            </div>
-            </footer>
         </div>
-    </div>
     )
 }
 

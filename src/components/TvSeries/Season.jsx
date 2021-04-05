@@ -1,20 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import MovieDetails from '../MovieDetails/MovieDetails';
-import '../style.css';
+import React from 'react';
+import '../card.css';
 
 
 const Season = ({ title, pic, summary }) => {
 
-   
+
     return (
-        
-        <div className="container">
-	       	<img src={pic} alt="Avatar" className="image" style={{ width: 290 }} />
-            <div className="middle">
-            <div className="text"><strong style={{ fontSize: 30 }}>{title}</strong><br/> {summary} <br/></div>
-            </div>
-	    </div>
+
+        <div class="card">
+            {/* <a href="#"> */}
+                <div class="img1" style={{
+                    backgroundImage: `url(${pic})`
+                }}></div>
+                <div class="img2" style={{
+                    backgroundImage: `url(${pic})`
+                }}></div>
+                <div class="title"></div>
+                <div class="text">{summary}</div>
+                {/* <a href="#"><div class="catagory">Download <i class="fas fa-film"></i></div></a>
+                <a href="#"><div class="views">20211  <i class="far fa-eye"></i> </div></a> */}
+            {/* </a> */}
+        </div>
 
     )
 }

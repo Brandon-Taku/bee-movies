@@ -1,36 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import MovieDetails from '../MovieDetails/MovieDetails';
-import '../style.css';
+import React from 'react';
+import '../card.css';
 
 
 const Movie = ({ title, pic, summary }) => {
 
-    const API_KEY = "fe5e020771ca617fdbe53a006489cea5";
-    const IMAGE_API = "https://image.tmdb.org/t/p/w1280";
-
-    const [movies, setMovies] = useState([]);
-    const [movieById, setMovieById] = useState([]);
-
-    useEffect(() => {
-        getMovies()
-    }, [])
-
-    const getMovies = async () => {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
-
-        const data = await response.json();
-        setMovies(data.results);
-    }
-
     return (
-        
-        <div className="container">
-	       	<img src={pic} alt="Avatar" className="image" style={{ width: 290 }} />
-            <div className="middle">
-            <div className="text"><strong style={{ fontSize: 30 }}>{title}</strong><br/> {summary} <br/></div>
-            </div>
-	    </div>
+
+        <div class="card">
+            {/* <a href="#"> */}
+                <div class="img1" style={{
+                    backgroundImage: `url(${pic})`
+                }}></div>
+                <div class="img2" style={{
+                    backgroundImage: `url(${pic})`
+                }}></div>
+                <div class="title"></div>
+                <div class="text">{summary}</div>
+                {/* <a href="#"><div class="catagory">Download <i class="fas fa-film"></i></div></a>
+                <a href="#"><div class="views">20211  <i class="far fa-eye"></i> </div></a>
+            </a> */}
+        </div>
 
     )
 }
