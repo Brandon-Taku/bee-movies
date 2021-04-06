@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer';
 
 const UpComingMovies = () => {
 
-    const API_KEY = "fe5e020771ca617fdbe53a006489cea5";
+    const API_KEY = "api_key";
     const IMAGE_API = "https://image.tmdb.org/t/p/w1280";
 
     const [movies, setMovies] = useState([]);
